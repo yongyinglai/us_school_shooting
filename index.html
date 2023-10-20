@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>US SCHOOL SHOOTINGS: Classrooms Under Fire</title>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"    
+     integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Titillium+Web:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+
+  <body>
+    <div>
+      <h1>US SCHOOL SHOOTINGS</h1>
+      <h2>Classrooms Under Fire <font size="10"> 1999 - 2023 </font></h2>
+      <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    </div>
+
+
+    <div class="intro">
+      <h3>Introduction</h3>
+    </div>
+
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="intro_text_left">
+          <p>
+            The United States is known for its strong gun ownership rights. 
+            <br><br>
+            Consequently, it ranks among the highest in the world for gun-related incidents. 
+            <br><br>
+            This visualisation explores school shootings in the US from 1999 to 2023 to <br> provide perspective on the impact of these rights on students.
+            <br><br>
+            Design by: <a href="https://www.linkedin.com/in/yong-ying-lai-b6386426a/">
+              Yong Ying Lai
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data source: <a href="https://www.kaggle.com/datasets/joebeachcapital/school-shootings/data">
+            Kaggle
+          </a>
+          </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="intro_text_right">
+          <p>
+            The 1st visualisation, combining <b>proportional symbol map</b> and <b>step chart</b>, discover the total number of student injuries across the years.
+            <br><br>
+            Secondly, the bar chart displays the number of students exposed to gun violence, which corresponds to the size of school enrolment involved in the shooting incidents.
+            <br><br>
+            Then, the shooter's profile is revealed, which includes the median age of the shooters and their intentions related to gun violence.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="block"> 
+      <div class="titles">
+        <h3>Total Number of Students Injured by Gun Violence</h3>
+      </div>
+      <div id="chart1"></div>
+      <p id="tip">
+        <b>👆 Navigation Tips:</b>
+        <br><br>
+        1. Hover over the circles to discover school shootings in specific cities.
+        <br><br>
+        2. Click and drag the step chart to explore the total incidents in specific years.
+      </p>
+    </div>
+
+    <div class="block"> 
+      <div class="titles">
+        <h3>Total Number of Students exposed to Gun Violence</h3>
+      </div>
+      <div id="barchart"></div>
+    </div>
+
+    <div class="intro">
+      <h3>Shooter's Profile</h3>
+    </div>
+    
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="titletwo">
+          <h5>Median Age</h5>
+        </div>
+        <div id="histogram"></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="titletwo">
+          <h5>Shooting Intentions</h5>
+          <div id="boxplot"></div>
+        </div>
+        
+      </div>
+    </div>
+
+
+
+
+  <script type="text/javascript">
+
+  var spec1 = "complete_map_line.json";
+    vegaEmbed('#chart1', spec1).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var spec2 = "bar_chart.json";
+    vegaEmbed('#barchart', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var spec3 = "histogram.json";
+    vegaEmbed('#histogram', spec3).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  var spec4 = "boxplot.json";
+    vegaEmbed('#boxplot', spec4).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/yongyinglai/US_school_shootings/main/us_school_shootings.csv"
+  },
+  "width": 650,
+  "height": 390,
+  "layer": [
+    {
+      "mark": {"type": "boxplot"},
+      "encoding": {
+        "x": {
+          "field": "shooting_type",
+          "type": "nominal",
+          "axis": {"labelAngle": -25},
+          "title": "Intention"
+        },
+        "color": {"field": "shooting_type", "type": "nominal", "legend": null},
+        "y": {
+          "aggregate": "count",
+          "field": "age_shooter1",
+          "type": "quantitative",
+          "scale": {"zero": false},
+          "title": "Shooter's Age"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "legend": {"titleFontSize": 16, "labelFontSize": 13, "orient": "top-right"},
+    "style": {"cell": {"stroke": "transparent"}},
+    "axis": {"titleFontSize": 16, "labelFontSize": 13}
+  }
+}

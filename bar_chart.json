@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/yongyinglai/US_school_shootings/main/us_school_shootings.csv"
+  },
+  "width": 1350,
+  "height": 390,
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "enrollment",
+            "type": "quantitative",
+            "title": "Total Students"
+          }
+        ],
+        "x": {
+          "field": "date",
+          "timeUnit": "year",
+          "axis": {
+            "title": "",
+            "grid": true,
+            "format": "%Y",
+            "gridOpacity": 0.5
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "enrollment",
+          "title": " Number of Students",
+          "axis": {"gridOpacity": 0.5}
+        },
+        "color": {"value": "black"}
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "legend": {"titleFontSize": 16, "labelFontSize": 13, "orient": "top-right"},
+    "style": {"cell": {"stroke": "transparent"}},
+    "axis": {"titleFontSize": 16, "labelFontSize": 13}
+  }
+}

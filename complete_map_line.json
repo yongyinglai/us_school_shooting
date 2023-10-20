@@ -1,0 +1,166 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "vconcat": [
+    {
+      "width": 1350,
+      "height": 600,
+      "projection": {"type": "albersUsa"},
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/yongyinglai/US_school_shootings/main/ne_110m_admin_1_states_provinces.json",
+            "format": {
+              "type": "topojson",
+              "feature": "ne_110m_admin_1_states_provinces"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": "black",
+            "stroke": "white",
+            "strokeWidth": 0.5
+          }
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/yongyinglai/US_school_shootings/main/us_school_shootings.csv"
+          },
+          "transform": [{"filter": {"param": "time_brush"}}],
+          "layer": [
+            {"mark": {"type": "circle", "opacity": 0.8, "cursor": "pointer"},
+            "encoding": {
+                "longitude": {"field": "long", "type": "quantitative"},
+                "latitude": {"field": "lat", "type": "quantitative"},
+                "tooltip": [
+                  {"field": "date", "type": "temporal", "format": "%d/%m/%Y", "title": "Date"},
+                  {"field": "state", "type": "nominal", "title": "State"},
+                  {"field": "city", "type": "nominal", "title": "City"},
+                  {
+                    "field": "casualties",
+                    "type": "quantitative",
+                    "title": "Total Victims"
+                  },
+                  {"field": "killed", "type": "quantitative", "title": "Killed"},
+                  {"field": "injured", "type": "quantitative", "title": "Injured"}
+                ],
+                "size": {
+                  "field": "casualties",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [1, 5, 10, 15, 20, 25, 30],
+                    "range": [20, 80, 190, 350, 700, 1200, 1800, 2800]
+                  }
+                },
+                "color": {
+                  "field": "casualties",
+                  "type": "quantitative",
+                  "title": " ",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [1, 5, 10, 15, 20, 25, 30],
+                    "scheme": "yelloworangered"
+                  },
+                  "legend": {"title": "Number of Victims", "titleAlign":"left"}
+                }
+              }
+            }, 
+            {
+              "transform": [
+                {
+                  "sort": [{"field": "casualties", "order": "descending"}], 
+                  "window": [{"op": "rank", "as": "ranking"}]
+                },
+                {"filter": "datum.casualties > 20"},
+                {
+                  "calculate": "datum['city'] + ':;' + datum['casualties'] + ' Victims ;' + datum['year']",
+                  "as": "text_annotation_raw"
+                },
+                {
+                  "calculate": "split(datum.text_annotation_raw, ';')",
+                  "as": "text_annotation"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "dx": 50,
+                "dy": 30,
+                "baseline": "middle",
+                "fontWeight": 600,
+                "fontSize": 18
+              },
+              "encoding": {
+                "text": {"field": "text_annotation"},
+                "color": {
+                  "field": "casualties",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "threshold",
+                    "domain": [1, 5, 10, 15, 20, 25, 30],
+                    "scheme": "yelloworangered"
+                  }
+                },
+                "longitude": {"field": "long", "type": "quantitative"},
+                "latitude": {"field": "lat", "type": "quantitative"}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1350,
+      "height": 190,
+      "data": {
+        "url": "https://raw.githubusercontent.com/yongyinglai/US_school_shootings/main/us_school_shootings.csv"
+      },
+      "layer":[{
+        "mark": {"type":"line", "interpolate": "step-after"},
+        "params": [{
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+          }],
+          "encoding": {
+            "tooltip": [
+              {"field": "date", "type": "temporal", "format": "%d/%m/%Y", "title": "Date"},
+              {
+                "field": "casualties",
+                "type": "quantitative",
+                "title": "Total Victims"
+              },
+              {"field": "killed", "type": "quantitative", "title": "Killed"},
+              {"field": "injured", "type": "quantitative", "title": "Injured"}
+            ],
+            "x": {
+              "field": "date",
+              "timeUnit": "yearmonthdate",
+              "axis": {"title": "", "grid": true, "format": "%Y", "gridOpacity": 0.5}
+            },
+            "y": {"aggregate": "sum", "field": "casualties", "title": "Total Number of Victims", "axis": {"gridOpacity": 0.5}},
+            "color": {
+                "value": "black"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "legend": {
+      "titleFontSize": 19,
+      "labelFontSize": 16,
+      "orient":"top-left"
+    },
+    "style": {
+      "cell": {
+        "stroke": "transparent"
+      }
+    },
+    "axis": {
+      "titleFontSize": 19,
+      "labelFontSize": 16
+    }
+  }
+}

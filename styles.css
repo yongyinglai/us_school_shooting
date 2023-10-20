@@ -1,0 +1,138 @@
+h1 {
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 90px;
+    margin-bottom: 0;
+    font-weight: 900;
+    color: white;
+}
+
+h2 {
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 65px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    color:rgb(205, 12, 12);
+    font-weight:100;
+}
+
+h3 {
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color:white;
+    font-weight:100;
+}
+
+h5 {
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color:black;
+    font-weight:100;
+}
+
+h4 {
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color:black;
+    font-weight:100;
+}
+
+body{
+    background-color: black;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 400;
+}
+
+.intro {
+    margin-left: 150px;
+    margin-right: 150px;
+
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    padding: 1mm 20px 1mm 1mm;
+    background-color: firebrick;
+    color: #eff7f7;
+}
+
+.pure-g {
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 0px;
+    margin-bottom: 45px;
+    font-size: 20px;
+    background-color: #ffffff;
+    padding: 0px 20px 0px 0px;
+}
+
+p{
+    margin-left: 50px;
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 19px;
+}
+
+.block {
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: #ffffff;
+    margin-bottom: 50px;
+}
+
+#chart1 {
+	bottom: 50px; 
+	left: 30px;
+	right: 30px;
+    top: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#barchart {
+	bottom: 50px; 
+	left: 30px;
+	right: 30px;
+    top: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.titles {
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 35px;
+    padding: 1mm 20px 1mm 1mm;
+    background-color: firebrick;
+    color: #eff7f7;
+}
+
+#tip {
+	width: 175px;
+	position: absolute;
+    color: black;
+    top: 114%; 
+    left: 16%; 
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    font-weight: 400;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.titletwo {
+    font-family: 'Audiowide', sans-serif;
+    text-align: center;
+    font-size: 35px;
+}
+

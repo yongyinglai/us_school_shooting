@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/yongyinglai/US_school_shootings/main/us_school_shootings.csv"
+  },
+  "width": 650,
+  "height": 455,
+  "transform": [{"filter": "datum.age_shooter1 != null"}],
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {
+      "field": "age_shooter1",
+      "bin": {"maxbins": 20},
+      "title": "Shooter's Age"
+    },
+    "y": {"aggregate": "count", "type": "quantitative", "title": "Count"},
+    "color": {"value": "black"},
+    "tooltip": [
+      {
+        "aggregate": "count",
+        "field": "age_shooter1",
+        "type": "quantitative",
+        "title": "Count"
+      },
+      {
+        "field": "killed",
+        "type": "quantitative",
+        "title": "Killed:",
+        "aggregate": "sum"
+      },
+      {
+        "field": "injured",
+        "type": "quantitative",
+        "title": "Injured:",
+        "aggregate": "sum"
+      }
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "legend": {"titleFontSize": 16, "labelFontSize": 13, "orient": "top-right"},
+    "style": {"cell": {"stroke": "transparent"}},
+    "axis": {"titleFontSize": 16, "labelFontSize": 13}
+  }
+}
